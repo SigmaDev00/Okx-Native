@@ -4,7 +4,7 @@ import { Button, StyleSheet, Text, View,TextInput, ScrollView } from 'react-nati
 const App = () => {
   const [doller,setDoller]=useState('23');
   const dollerGet = async ()=>{
-    const response = await fetch('http://localhost:3000/api/users/');
+    const response = await fetch('http://example/api/');
     const data = await response.json();
     const result = data.res;
     setDoller(result)
