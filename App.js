@@ -22,6 +22,28 @@ const App = () => {
     };
   }, []);
 
+  const elements = [];
+
+  for (let i = 0; i < 7; i++) {
+    elements.push(
+      <Text
+        key={i}
+        style={{ color: 'white', marginTop: '5%', fontSize: 20 }}
+      >
+        Eth                     20/1/2023           1,800
+      </Text>
+    );
+  }
+
+  const announcements = [];
+
+  for (let i = 0; i < 5; i++) {
+    announcements.push(<>
+      <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
+      <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text></>
+    );
+  }
+
   return (
     <View style={styles.container}>
         <View style={styles.navbar}>
@@ -66,17 +88,12 @@ const App = () => {
         <View style={{height: 10, backgroundColor: 'gray',marginTop:'2%'}} />
 
         <View style={{margin:'3%'}}>
+
+           
+
           <Text style={{color:'gray',fontSize:'20',fontWeight:'bold'}}>Favorites     Top     Hot     Gainers     New</Text>
           <Text style={{color:'gray',marginTop:'5%'}}>Name                          Listing Date        Change/Last Price</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-          <Text style={{color:'white',marginTop:'5%',fontSize:'20'}}>Eth                     20/1/2023           1,800</Text>
-
+          {elements}
           <View style={{height: 10, backgroundColor: 'gray',marginTop:'5%'}} />
 
           <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Announcements</Text>
@@ -86,25 +103,7 @@ const App = () => {
 
         <View style={{height: 1, backgroundColor: 'gray'}} />
         <View style={{padding:'3%'}}>
-
-
-        <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
-        <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text>
-
-        <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
-        <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text>
-
-        <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
-        <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text>
-
-        <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
-        <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text>
-
-        <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
-        <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text>
-
-        <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Okex to list this token TWc/Usdt .</Text>
-        <Text style={{color:'gray',marginLeft:'3%'}}>08/07/2023, 16:20</Text>
+          {announcements}
         </View>
         
         </ScrollView>
