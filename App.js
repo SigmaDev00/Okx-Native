@@ -1,6 +1,27 @@
+import { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View,TextInput, ScrollView } from 'react-native';
 
 const App = () => {
+  const [doller,setDoller]=useState('23');
+  const dollerGet = async ()=>{
+    const response = await fetch('http://localhost:3000/api/users/');
+    const data = await response.json();
+    const result = data.res;
+    setDoller(result)
+  }
+  useEffect(() => {
+    // Initial call when the component mounts
+    dollerGet();
+
+    // Set up an interval to call dollerGet every 30 seconds (30,000 milliseconds)
+    const intervalId = setInterval(dollerGet, 1000);
+
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
         <View style={styles.navbar}>
@@ -20,13 +41,13 @@ const App = () => {
 
         <View style={{backgroundColor:'black',marginTop:'2%'}}>
           <Text style={{fontSize:'20',color:'white'}}>Est total value: </Text>
-          <Text style={{fontWeight:'bold',fontSize:'40',color:'white'}}>$2000<Text style={{fontSize:'15',fontWeight:'normal'}}>USDT↓</Text></Text>
+          <Text style={{fontWeight:'bold',fontSize:'40',color:'white'}}>${doller}<Text style={{fontSize:'15',fontWeight:'normal'}}>USDT↓</Text></Text>
 
         </View>
 
         <View style={{display:'flex',flexDirection:'row',justifyContent:"space-around",marginTop:'10%'}}>
           <View style={{display:'flex',backgroundColor:'gray',borderRadius:'50%',textAlign:'center',padding:'2%',flexGrow:'1',justifyContent:'center',alignItems:'center'}}>
-          <Text style={{fontSize:'25',color:'white',fontWeight:'bold'}}>    €  Deposit   </Text>
+          <Text onPress={dollerGet} style={{fontSize:'25',color:'white',fontWeight:'bold'}}>    €  Deposit   </Text>
           </View>
           <View style={{display:'flex',backgroundColor:'gray',borderRadius:'50%',textAlign:'center',padding:'2%',flexGrow:'1',justifyContent:'center',alignItems:'center',marginLeft:'5%'}}>
           <Text style={{fontSize:'25',color:'white',fontWeight:'bold'}}>⇌  P2P Trading</Text>
@@ -38,7 +59,7 @@ const App = () => {
         <View style={{padding:'4%'}}>
         <Text style={{color:'gray',fontWeight:'bold'}}>Copy Trading</Text>
         <Text style={{color:'white',fontWeight:'bold',fontSize:'20',paddingTop:'2%'}}>Automatically copy expert traders and earb upto 500% Pnl!</Text>
-        <Text style={{color:'white',fontWeight:'bold',fontSize:'18',paddingTop:'5%'}}>Try  now -> </Text>
+        <Text style={{color:'white',fontWeight:'bold',fontSize:'18',paddingTop:'5%'}}>Try  now - </Text>
 
         </View>
 
@@ -58,7 +79,7 @@ const App = () => {
 
           <View style={{height: 10, backgroundColor: 'gray',marginTop:'5%'}} />
 
-          <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Announcements                                   ></Text>
+          <Text style={{color:'white',margin:'3%',fontSize:'22',fontWeight:'bold'}}>Announcements</Text>
 
         </View>
 
